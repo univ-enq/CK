@@ -4,6 +4,8 @@ import Navbar from './components/Navbar'
 import Carousel from './components/Carousel'
 import Contact from './pages/Contact';
 import LegalAdvisor from './pages/LegalAdvisor';
+import Directors from './pages/Directors';
+import EventsCalendar from './pages/EventsCalendar';
 import Footer from './components/Footer';
 import './App.css'
 
@@ -101,6 +103,8 @@ function App() {
         } />
         <Route path="/contact" element={<Contact />} />
         <Route path="/legal-advisor" element={<LegalAdvisor />} />
+        <Route path="/academics/directors-founder" element={<Directors />} />
+        <Route path="/news/events" element={<EventsCalendar />} />
       </Routes>
       <Footer />
     </Router>

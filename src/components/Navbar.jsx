@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 import whatsappLogo from '../assets/WhatsApp Image 2025-05-20 at 06.06.10_6fad75d9.jpg';
 
@@ -88,13 +89,13 @@ const Navbar = () => {
             {renderDropdown(item.children, [...currentDropdownChain, item.title.replace(/\s+/g, '-').toLowerCase()])}
           </div>
         ) : (
-          <a 
+          <Link 
             key={index}
-            href={item.path}
+            to={item.path}
             className="dropdown-item"
           >
             {item.title}
-          </a>
+          </Link>
         )
       ))}
     </div>
@@ -104,15 +105,15 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <a href="/">
+          <Link to="/">
             <img src={whatsappLogo} alt="WhatsApp Logo" className="site-logo" />
             Collective Knowledge
-          </a>
+          </Link>
         </div>
         
         <div className={`navbar-menu${isMenuOpen ? ' active' : ''}`}>
           <ul className="nav-links">
-            <li><a href="/" className="nav-link">Home</a></li>
+            <li><Link to="/" className="nav-link">Home</Link></li>
             <li 
               className="dropdown-container"
               onMouseEnter={() => handleMouseEnter(['academics'])}
@@ -173,7 +174,7 @@ const Navbar = () => {
               </button>
               {renderDropdown(newsItems, ['news'])}
             </li>
-            <li><a href="/contact" className="nav-link">Contact</a></li>
+            <li><Link to="/contact" className="nav-link">Contact</Link></li>
           </ul>
         </div>
 

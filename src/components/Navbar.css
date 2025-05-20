@@ -484,6 +484,23 @@
   .nav-links li:last-child .nav-link:hover {
     background: #000;
   }
+
+  /* Hide People section in mobile/tablet view */
+  .dropdown-menu .people-section,
+  .dropdown-menu .people-item {
+    display: none !important;
+  }
+
+  /* Adjust spacing for dropdown menu */
+  .dropdown-menu.show {
+    margin-top: 0.5rem;
+    padding-top: 0.25rem;
+  }
+
+  /* Ensure smooth animation for visible items */
+  .dropdown-menu.show .dropdown-item:not(.people-item) {
+    animation: dropdownItemFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
 }
 
 /* Animation for menu items */

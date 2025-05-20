@@ -196,4 +196,100 @@
     width: 28px;
     height: 28px;
   }
+}
+
+.visitor-counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #fff;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.visitor-counter:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.visitor-counter i {
+  color: #4a90e2;
+  font-size: 1rem;
+}
+
+.counter-label {
+  color: #ccc;
+  font-weight: 500;
+}
+
+.counter-number {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
+  background: rgba(74, 144, 226, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Animation for counter */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.counter-number {
+  animation: countUp 0.5s ease forwards;
+}
+
+/* Mobile styles for visitor counter */
+@media (max-width: 768px) {
+  .visitor-counter {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+  }
+
+  .visitor-counter i {
+    font-size: 0.9rem;
+  }
+
+  .counter-number {
+    padding: 1px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visitor-counter {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    gap: 6px;
+  }
+
+  .visitor-counter i {
+    font-size: 0.85rem;
+  }
+
+  .counter-label {
+    font-size: 0.75rem;
+  }
+
+  .counter-number {
+    font-size: 0.8rem;
+    padding: 1px 5px;
+  }
 } 

@@ -22,6 +22,11 @@ const Navbar = () => {
     }, 200);
   };
 
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+    setActiveDropdown([]);
+  };
+
   const academicsItems = [
     { title: "Directors & Founder", path: "/academics/directors-founder" },
     { title: "Co-Directors", path: "/academics/co-directors" },
@@ -80,19 +85,23 @@ const Navbar = () => {
         item.children ? (
           <div 
             key={index}
-            className="dropdown-item dropdown-parent"
+            className={`dropdown-item dropdown-parent ${item.title === "People" ? 'people-section' : ''}`}
             onMouseEnter={() => handleMouseEnter([...currentDropdownChain, item.title.replace(/\s+/g, '-').toLowerCase()])}
             onMouseLeave={handleMouseLeave}
           >
             <span>{item.title}</span>
             <span className="dropdown-arrow">►</span>
-            {renderDropdown(item.children, [...currentDropdownChain, item.title.replace(/\s+/g, '-').toLowerCase()])}
+            {renderDropdown(item.children.map(child => ({
+              ...child,
+              className: 'people-item'
+            })), [...currentDropdownChain, item.title.replace(/\s+/g, '-').toLowerCase()])}
           </div>
         ) : (
           <Link 
             key={index}
             to={item.path}
-            className="dropdown-item"
+            className={`dropdown-item ${item.path.includes('/legal-advisor') || item.path.includes('/technical-advisor') ? 'people-item' : ''}`}
+            onClick={handleLinkClick}
           >
             {item.title}
           </Link>
@@ -105,7 +114,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <Link to="/">
+          <Link to="/" onClick={handleLinkClick}>
             <img src={whatsappLogo} alt="WhatsApp Logo" className="site-logo" />
             Collective Knowledge
           </Link>
@@ -113,7 +122,7 @@ const Navbar = () => {
         
         <div className={`navbar-menu${isMenuOpen ? ' active' : ''}`}>
           <ul className="nav-links">
-            <li><Link to="/" className="nav-link">Home</Link></li>
+            <li><Link to="/" className="nav-link" onClick={handleLinkClick}>Home</Link></li>
             <li 
               className="dropdown-container"
               onMouseEnter={() => handleMouseEnter(['academics'])}
@@ -174,7 +183,7 @@ const Navbar = () => {
               </button>
               {renderDropdown(newsItems, ['news'])}
             </li>
-            <li><Link to="/contact" className="nav-link">Contact</Link></li>
+            <li><Link to="/contact" className="nav-link" onClick={handleLinkClick}>Contact</Link></li>
           </ul>
         </div>
 

@@ -7,6 +7,7 @@ import LegalAdvisor from './pages/LegalAdvisor';
 import Directors from './pages/Directors';
 import TechnicalAdvisor from './pages/TechnicalAdvisor';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import './App.css'
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Navbar className={scrolled ? 'scrolled' : ''} />
       <Routes>
         <Route path="/" element={

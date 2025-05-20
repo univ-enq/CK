@@ -1,8 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.css';
 
 const Footer = () => {
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  useEffect(() => {
+    // Get the current count from localStorage
+    const storedCount = localStorage.getItem('visitorCount');
+    const currentCount = storedCount ? parseInt(storedCount) : 0;
+    
+    // Increment the count
+    const newCount = currentCount + 1;
+    
+    // Update localStorage and state
+    localStorage.setItem('visitorCount', newCount.toString());
+    setVisitorCount(newCount);
+  }, []); // Empty dependency array means this runs once on mount
+
+  // Format the number with commas
+  const formatNumber = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   const footerLinks = {
     academics: {
       title: "Academics",
@@ -68,25 +88,30 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
+          <div className="visitor-counter">
+            <i className="fas fa-eye"></i>
+            <span className="counter-label">Visitors:</span>
+            <span className="counter-number">{formatNumber(visitorCount)}</span>
+          </div>
           <div className="footer-legal">
             <Link to="/privacy">Privacy Policy</Link>
             <Link to="/terms">Terms of Use</Link>
             <Link to="/accessibility">Accessibility</Link>
           </div>
           <div className="footer-social">
-            <a href="#" className="social-link" title="Facebook">
+            <a href="#" className="social-link" title="Facebook" aria-label="Facebook">
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#" className="social-link" title="Twitter">
+            <a href="#" className="social-link" title="Twitter" aria-label="Twitter">
               <i className="fab fa-twitter"></i>
             </a>
-            <a href="#" className="social-link" title="LinkedIn">
+            <a href="#" className="social-link" title="LinkedIn" aria-label="LinkedIn">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" className="social-link" title="Instagram">
+            <a href="#" className="social-link" title="Instagram" aria-label="Instagram">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="#" className="social-link" title="YouTube">
+            <a href="#" className="social-link" title="YouTube" aria-label="YouTube">
               <i className="fab fa-youtube"></i>
             </a>
           </div>

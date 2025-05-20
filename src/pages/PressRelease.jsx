@@ -1,0 +1,213 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import './PressRelease.css';
+
+const PressRelease = () => {
+  const [activeYear, setActiveYear] = useState('2024');
+  const [selectedRelease, setSelectedRelease] = useState(null);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  const years = ['2024', '2023', '2022', '2021'];
+
+  const pressReleases = [
+    {
+      id: 1,
+      title: "Collective Knowledge Launches New Research Initiative",
+      date: "2024-03-15",
+      category: "Research",
+      summary: "Collective Knowledge announces a groundbreaking research initiative focused on artificial intelligence and sustainable technology solutions.",
+      content: "In a significant step towards advancing technological innovation, Collective Knowledge has launched a new research initiative that combines artificial intelligence with sustainable technology solutions. This initiative aims to address critical challenges in environmental sustainability while leveraging cutting-edge AI technologies.\n\nThe program will bring together leading researchers, industry experts, and students to collaborate on projects that have the potential to create meaningful impact in areas such as renewable energy, waste management, and smart city solutions.\n\n'We are excited to embark on this journey that combines academic excellence with practical applications,' said Dr. Sarah Johnson, Director of Research at Collective Knowledge. 'This initiative represents our commitment to fostering innovation that benefits society as a whole.'",
+      image: "https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
+      tags: ["Research", "AI", "Sustainability"]
+    },
+    {
+      id: 2,
+      title: "Partnership Announcement: Global Tech Leaders Join Forces",
+      date: "2024-02-28",
+      category: "Partnership",
+      summary: "Collective Knowledge forms strategic partnerships with leading technology companies to enhance educational programs and research capabilities.",
+      content: "Collective Knowledge is proud to announce strategic partnerships with several leading technology companies. These collaborations will enhance our educational programs and research capabilities, providing students with unprecedented access to industry expertise and resources.\n\nThe partnerships will facilitate:\n• Joint research projects\n• Industry mentorship programs\n• Internship opportunities\n• Technology transfer initiatives\n\n'These partnerships represent a significant milestone in our mission to bridge academia and industry,' stated Dr. Michael Chen, Director of Strategic Partnerships. 'We are committed to creating opportunities that prepare our students for the future of work.'",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
+      tags: ["Partnership", "Education", "Technology"]
+    },
+    {
+      id: 3,
+      title: "New Campus Expansion Project Announced",
+      date: "2024-01-20",
+      category: "Infrastructure",
+      summary: "Collective Knowledge reveals plans for a major campus expansion to accommodate growing student population and new research facilities.",
+      content: "Collective Knowledge has announced plans for a major campus expansion project that will significantly enhance our infrastructure and research capabilities. The expansion includes:\n\n• State-of-the-art research laboratories\n• Modern learning spaces\n• Innovation hub\n• Sustainable energy systems\n\nThe project, scheduled for completion in 2025, will create additional space for our growing student population while incorporating sustainable design principles and cutting-edge technology.\n\n'This expansion reflects our commitment to providing world-class facilities for our students and researchers,' said Dr. Emily Rodriguez, Director of Campus Development. 'We are designing spaces that will foster innovation and collaboration for years to come.'",
+      image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
+      tags: ["Infrastructure", "Development", "Sustainability"]
+    }
+  ];
+
+  const filteredReleases = pressReleases.filter(release => 
+    release.date.startsWith(activeYear)
+  );
+
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+  };
+
+  return (
+    <div className="press-release-page">
+      <section className="press-hero">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Press Releases
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          Stay informed about our latest announcements, achievements, and initiatives
+        </motion.p>
+      </section>
+
+      <div className="press-container">
+        <div className="year-filter">
+          {years.map((year) => (
+            <motion.button
+              key={year}
+              className={`year-button ${activeYear === year ? 'active' : ''}`}
+              onClick={() => setActiveYear(year)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {year}
+            </motion.button>
+          ))}
+        </div>
+
+        <motion.div
+          className="press-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {filteredReleases.map((release) => (
+            <motion.article
+              key={release.id}
+              className="press-card"
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              onClick={() => setSelectedRelease(release)}
+            >
+              <div className="press-image">
+                <img src={release.image} alt={release.title} />
+                <span className="category-badge">{release.category}</span>
+              </div>
+              <div className="press-content">
+                <div className="press-date">
+                  <i className="far fa-calendar"></i>
+                  {formatDate(release.date)}
+                </div>
+                <h2 className="press-title">{release.title}</h2>
+                <p className="press-summary">{release.summary}</p>
+                <div className="press-tags">
+                  {release.tags.map((tag, index) => (
+                    <span key={index} className="tag">{tag}</span>
+                  ))}
+                </div>
+                <motion.button
+                  className="read-more-button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Read More
+                </motion.button>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+      </div>
+
+      {selectedRelease && (
+        <motion.div
+          className="press-modal"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedRelease(null)}
+        >
+          <motion.div
+            className="press-modal-content"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button className="close-button" onClick={() => setSelectedRelease(null)}>×</button>
+            <div className="modal-image">
+              <img src={selectedRelease.image} alt={selectedRelease.title} />
+            </div>
+            <div className="modal-content">
+              <div className="modal-header">
+                <div className="modal-date">
+                  <i className="far fa-calendar"></i>
+                  {formatDate(selectedRelease.date)}
+                </div>
+                <span className="modal-category">{selectedRelease.category}</span>
+              </div>
+              <h2>{selectedRelease.title}</h2>
+              <div className="modal-tags">
+                {selectedRelease.tags.map((tag, index) => (
+                  <span key={index} className="tag">{tag}</span>
+                ))}
+              </div>
+              <div className="modal-body">
+                {selectedRelease.content.split('\n\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+              <div className="modal-footer">
+                <motion.button
+                  className="share-button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-share-alt"></i> Share
+                </motion.button>
+                <motion.button
+                  className="download-button"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <i className="fas fa-download"></i> Download PDF
+                </motion.button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
+export default PressRelease; 

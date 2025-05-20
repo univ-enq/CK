@@ -38,7 +38,7 @@ const Footer = () => {
       title: "Research & Publication",
       links: [
         { name: "Research Centers", path: "/research/centers" },
-        { name: "Publications", path: "/research/publications" },
+        { name: "Publications", path: "/news/publications" },
         { name: "Research Projects", path: "/research/projects" },
         { name: "Collaborations", path: "/research/collaborations" },
         { name: "Research Grants", path: "/research/grants" }
@@ -48,9 +48,9 @@ const Footer = () => {
       title: "For Students",
       links: [
         { name: "Student Portal", path: "/students/portal" },
-        { name: "Academic Calendar", path: "/students/calendar" },
-        { name: "Student Services", path: "/students/services" },
-        { name: "Campus Life", path: "/students/campus-life" },
+        { name: "Academic Calendar", path: "/academic-calendar" },
+        { name: "Internships", path: "/students/services" },
+        { name: "Fellowship", path: "/students/campus-life" },
         { name: "Student Resources", path: "/students/resources" },
         { name: "Student Organizations", path: "/students/organizations" }
       ]
@@ -58,9 +58,9 @@ const Footer = () => {
     news: {
       title: "News & Events",
       links: [
-        { name: "Latest News", path: "/news/latest" },
+        { name: "Latest News", path: "/news" },
         { name: "Events Calendar", path: "/news/events" },
-        { name: "Press Releases", path: "/news/press" },
+        { name: "Press Releases", path: "/news/press-releases" },
         { name: "Media Gallery", path: "/news/gallery" },
         { name: "Newsletter", path: "/news/newsletter" }
       ]

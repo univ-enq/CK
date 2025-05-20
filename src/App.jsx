@@ -6,8 +6,20 @@ import Contact from './pages/Contact';
 import LegalAdvisor from './pages/LegalAdvisor';
 import Directors from './pages/Directors';
 import TechnicalAdvisor from './pages/TechnicalAdvisor';
+import Achievements from './pages/Achievements';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import AcademicCalendar from './pages/AcademicCalendar';
+import StudentPortal from './pages/StudentPortal';
+import Internships from './pages/Internships';
+import Fellowship from './pages/Fellowship';
+import LatestNews from './pages/LatestNews';
+import EventsCalendar from './pages/EventsCalendar';
+import PressRelease from './pages/PressRelease';
+import MediaGallery from './pages/MediaGallery';
+import Newsletter from './pages/Newsletter';
+import Publications from './pages/Publications';
+import ResearchProjects from './pages/ResearchProjects';
 import './App.css'
 
 function App() {
@@ -107,6 +119,18 @@ function App() {
         <Route path="/legal-advisor" element={<LegalAdvisor />} />
         <Route path="/academics/directors-founder" element={<Directors />} />
         <Route path="/academics/people/technical-advisor" element={<TechnicalAdvisor />} />
+        <Route path="/students/organizations" element={<Achievements />} />
+        <Route path="/academic-calendar" element={<AcademicCalendar />} />
+        <Route path="/students/portal" element={<StudentPortal />} />
+        <Route path="/students/services" element={<Internships />} />
+        <Route path="/students/campus-life" element={<Fellowship />} />
+        <Route path="/news" element={<LatestNews />} />
+        <Route path="/news/events" element={<EventsCalendar />} />
+        <Route path="/news/press-releases" element={<PressRelease />} />
+        <Route path="/news/gallery" element={<MediaGallery />} />
+        <Route path="/news/newsletter" element={<Newsletter />} />
+        <Route path="/news/publications" element={<Publications />} />
+        <Route path="/research/projects" element={<ResearchProjects />} />
       </Routes>
       <Footer />
     </Router>

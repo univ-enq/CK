@@ -27,7 +27,7 @@ const PressRelease = () => {
     }
   };
 
-  const years = ['2024', '2023', '2022', '2021'];
+  const years = ['2024', '2023'];
 
   const pressReleases = [
     {
@@ -37,28 +37,8 @@ const PressRelease = () => {
       category: "Research",
       summary: "Collective Knowledge announces a groundbreaking research initiative focused on artificial intelligence and sustainable technology solutions.",
       content: "In a significant step towards advancing technological innovation, Collective Knowledge has launched a new research initiative that combines artificial intelligence with sustainable technology solutions. This initiative aims to address critical challenges in environmental sustainability while leveraging cutting-edge AI technologies.\n\nThe program will bring together leading researchers, industry experts, and students to collaborate on projects that have the potential to create meaningful impact in areas such as renewable energy, waste management, and smart city solutions.\n\n'We are excited to embark on this journey that combines academic excellence with practical applications,' said Dr. Sarah Johnson, Director of Research at Collective Knowledge. 'This initiative represents our commitment to fostering innovation that benefits society as a whole.'",
-      image: "https://images.unsplash.com/photo-1581092921461-39b9d08a9b21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
       tags: ["Research", "AI", "Sustainability"]
-    },
-    {
-      id: 2,
-      title: "Partnership Announcement: Global Tech Leaders Join Forces",
-      date: "2024-02-28",
-      category: "Partnership",
-      summary: "Collective Knowledge forms strategic partnerships with leading technology companies to enhance educational programs and research capabilities.",
-      content: "Collective Knowledge is proud to announce strategic partnerships with several leading technology companies. These collaborations will enhance our educational programs and research capabilities, providing students with unprecedented access to industry expertise and resources.\n\nThe partnerships will facilitate:\n• Joint research projects\n• Industry mentorship programs\n• Internship opportunities\n• Technology transfer initiatives\n\n'These partnerships represent a significant milestone in our mission to bridge academia and industry,' stated Dr. Michael Chen, Director of Strategic Partnerships. 'We are committed to creating opportunities that prepare our students for the future of work.'",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
-      tags: ["Partnership", "Education", "Technology"]
-    },
-    {
-      id: 3,
-      title: "New Campus Expansion Project Announced",
-      date: "2024-01-20",
-      category: "Infrastructure",
-      summary: "Collective Knowledge reveals plans for a major campus expansion to accommodate growing student population and new research facilities.",
-      content: "Collective Knowledge has announced plans for a major campus expansion project that will significantly enhance our infrastructure and research capabilities. The expansion includes:\n\n• State-of-the-art research laboratories\n• Modern learning spaces\n• Innovation hub\n• Sustainable energy systems\n\nThe project, scheduled for completion in 2025, will create additional space for our growing student population while incorporating sustainable design principles and cutting-edge technology.\n\n'This expansion reflects our commitment to providing world-class facilities for our students and researchers,' said Dr. Emily Rodriguez, Director of Campus Development. 'We are designing spaces that will foster innovation and collaboration for years to come.'",
-      image: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=400&q=80",
-      tags: ["Infrastructure", "Development", "Sustainability"]
     }
   ];
 
@@ -163,7 +143,7 @@ const PressRelease = () => {
             exit={{ scale: 0.9, opacity: 0 }}
             onClick={e => e.stopPropagation()}
           >
-            <button className="close-button" onClick={() => setSelectedRelease(null)}>×</button>
+            <button className="close-button" onClick={() => setSelectedRelease(null)}></button>
             <div className="modal-image">
               <img src={selectedRelease.image} alt={selectedRelease.title} />
             </div>

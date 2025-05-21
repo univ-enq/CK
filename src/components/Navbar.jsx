@@ -6,8 +6,18 @@ import whatsappLogo from '../assets/WhatsApp Image 2025-05-20 at 06.06.10_6fad75
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 992);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleMouseEnter = (dropdownChain) => {
     if (timeoutRef.current) {
@@ -31,14 +41,14 @@ const Navbar = () => {
     { title: "Directors & Founder", path: "/academics/directors-founder" },
     { title: "Co-Directors", path: "/academics/co-directors" },
     { title: "Fellows", path: "/academics/fellows" },
-    { 
+    ...(isMobile ? [] : [{
       title: "People", 
       path: "/academics/people",
       children: [
         { title: "Legal Advisor", path: "/legal-advisor" },
         { title: "Technical Advisor", path: "/academics/people/technical-advisor" }
       ]
-    }
+    }])
   ];
 
   const researchItems = [
